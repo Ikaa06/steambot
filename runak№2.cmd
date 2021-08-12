@@ -1,0 +1,3 @@
+python bot.py
+
+pause
