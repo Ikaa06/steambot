@@ -9,7 +9,8 @@ from selenium import webdriver
 
 from fanks import *
 from sql import save_user, proverka_tovarov, sferka, updata, proverka_time, update_tovar, delet_tovar
-path_driver = os.path.join(pathlib.Path(__file__).parent.absolute(), "geckodriver")
+# os.path.join(, "geckodriver")
+path_driver = pathlib.Path(__file__).parent.absolute()
 driver = webdriver.Firefox(path_driver)
 
 # вход в на сайт
