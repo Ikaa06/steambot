@@ -1,4 +1,5 @@
 import logging
+import os
 import pathlib
 import pickle
 from sys import argv
@@ -8,8 +9,8 @@ from selenium import webdriver
 
 from fanks import *
 from sql import save_user, proverka_tovarov, sferka, updata, proverka_time, update_tovar, delet_tovar
-
-driver = webdriver.Firefox(pathlib.Path(__file__).parent.absolute())
+path_driver = os.path.join(pathlib.Path(__file__).parent.absolute(), "geckodriver.exe")
+driver = webdriver.Firefox(path_driver)
 
 # вход в на сайт
 driver.get('https://dmarket.com/ru/ingame-items/item-list/csgo-skins')
@@ -49,7 +50,6 @@ while True:
                 driver.refresh()
                 time.sleep(30)
                 k += 1
-
             else:
                 time.sleep(5)
 
