@@ -9,34 +9,29 @@ from selenium import webdriver
 
 from fanks import *
 from sql import save_user, proverka_tovarov, sferka, updata, proverka_time, update_tovar, delet_tovar
-# os.path.join(, "geckodriver")
-path_driver = pathlib.Path(__file__).parent.absolute()
-driver = webdriver.Firefox(path_driver)
+
+path_driver = os.path.join(pathlib.Path(__file__).parent.absolute(), "geckodriver")
+driver = webdriver.Firefox(executable_path=path_driver)
 
 # вход в на сайт
 driver.get('https://dmarket.com/ru/ingame-items/item-list/csgo-skins')
 # авторизация на сайте
 account, passwort = argv[1:]
-print('Войдите в аккаунт в ручную ', account, passwort)
 try:
     cookies = pickle.load(open(f"cokiss/{account}.pkl", "rb"))
     for cookie in cookies:
         driver.add_cookie(cookie)
     driver.refresh()
 except Exception as e:
-    print('Войтите в аккаунт в ручную ', account, '\n', passwort)
+    print('Войтите в аккаунт в ручную ', account, passwort)
     input('АВТ')
     pickle.dump(driver.get_cookies(), open(f"cokiss/{account}.pkl", "wb"))
 
 input('Для начало работ нажмите enter')
-login_btn = driver.find_element_by_xpath(
-    '/html/body/app-root/mat-sidenav-container/mat-sidenav-content/exchange/div/div[1]/div['
-    '1]/user-inventory-tabs/div/div[3]').click()
 # ожидание
 time.sleep(10)
 print('Сохранение товара')
 # создание списка товаров
-
 while True:
     k = 0
     while True:

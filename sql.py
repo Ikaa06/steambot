@@ -76,9 +76,9 @@ def sferka(account, img, t):
 
 
 def updata(account, img, t, data, f):
-    if t == 'Активный':
+    if t == 'Active':
         t = '0'
-    elif t == 'Неактивный':
+    elif t == 'Inactive':
         t = '1'
     max_ranok, min_pay, average_price, Steam_price = data
     f = toFixed(f, 2)
