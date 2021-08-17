@@ -1,4 +1,5 @@
 import logging
+import pathlib
 import pickle
 from sys import argv
 
@@ -8,7 +9,7 @@ from selenium import webdriver
 from fanks import *
 from sql import save_user, proverka_tovarov, sferka, updata, proverka_time, update_tovar, delet_tovar
 
-driver = webdriver.Firefox('D://botPaySteem/botPaySteem/steambot0.2')
+driver = webdriver.Firefox(pathlib.Path(__file__).parent.absolute())
 
 # вход в на сайт
 driver.get('https://dmarket.com/ru/ingame-items/item-list/csgo-skins')
